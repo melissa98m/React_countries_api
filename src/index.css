@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Dark */
+  --elements-dark: hsl(209, 23%, 22%);
+  --background-dark: hsl(220, 100%, 15%);
+  --input-dark: hsl(225, 78%, 81%);
+  --text-dark:  hsl(225, 78%, 81%);
+  /* Light */
+  --elements-light: hsl(0, 0%, 100%);
+  --background-light: hsl(225, 78%, 81%);
+  --input-light: hsl(220, 100%, 15%);
+  --text-light: hsl(220, 100%, 15%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: var(--text-dark);
+    --elements: var(--elements-dark);
+    --background: var(--background-dark);
+    --input: var(--input-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: var(--text-light);
+    --elements: var(--elements-light);
+    --background: var(--background-light);
+    --input: var(--input-light);
+  }
+}
+
+body[data-theme="dark"] {
+  --text: var(--text-dark);
+  --elements: var(--elements-dark);
+  --background: var(--background-dark);
+  --input: var(--input-dark);
+}
+
+body[data-theme="light"] {
+  --text: var(--text-light);
+  --elements: var(--elements-light);
+  --background: var(--background-light);
+  --input: var(--input-light);
+}
+
+body {
+  background: var(--background);
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.container {
+  padding: 0 1rem;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}

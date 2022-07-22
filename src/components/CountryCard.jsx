@@ -2,7 +2,7 @@ import Card from "./Card";
 import { Link } from "react-router-dom";
 import "../styles/CountryCard.css";
 
-const CountryCard = ({ flag, name, population, region, capital}) => {
+const CountryCard = ({ flag, name, population, region, capital , currencies}) => {
   return (
     <Card>
       <div className="country-card">
@@ -25,6 +25,10 @@ const CountryCard = ({ flag, name, population, region, capital}) => {
             <li>
               <span>Capitale: </span>
               {capital}
+            </li>
+            <li>
+            <span>Monnaie: </span>
+              {currencies}
             </li>
           </ul>
             <Link to={`/${name.toLowerCase().replace(/\s+/g, "-")}`}>

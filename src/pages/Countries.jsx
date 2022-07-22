@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AllCountries from "../components/AllCountries";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
+import CurrencyFilter from "../components/CurrencyFilter";
 import LoadingSpinner from "../components/LoadingSpinner";
 import "../styles/Countries.css";
 
@@ -24,6 +25,14 @@ const Homepage = () => {
     return;
   };
 
+  const currencyHandler = (userOptionCurrency) => {
+      if (userOptionCurrency !== "") {
+        fetchCountries(`https://restcountries.com/v3.1/currency/${userOptionCurrency}`);
+      } else {
+        fetchCountries(`https://restcountries.com/v3.1/all`);
+      }
+      return;
+    };
   const fetchCountries = async (endpoint) => {
     setIsLoading(false);
     try {
@@ -41,7 +50,7 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    fetchCountries("https://restcountries.com/v3.1/all?order=asc");
+    fetchCountries("https://restcountries.com/v3.1/all");
   }, []);
 
   const filteredCountries = countries.filter((country) => {
@@ -61,6 +70,7 @@ const Homepage = () => {
       <div className="filters">
         <Search searchHandler={handleSearch} />
         <Filter filterHandler={handleFilter} />
+        <CurrencyFilter currencyHandler={currencyHandler} />
       </div>
       {isLoading && <LoadingSpinner />}
       {error && <p>{error}</p>}
